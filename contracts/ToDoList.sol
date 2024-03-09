@@ -2,6 +2,7 @@ pragma solidity >=0.4.21 <0.9;
 
 contract TodoList {
   uint public userCount = 0;
+  uint public userCount_ = 0;
 
   struct Task {
     uint id;

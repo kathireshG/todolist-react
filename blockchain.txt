@@ -1,0 +1,61 @@
+npx create-react-app .
+truffle init
+
+change truffle-config file
+    uncomment server
+    change solidity version
+
+then create contracts in contracts folder
+then create migrations files
+
+truffle compile
+truffle migrate --reset
+
+npm i web3@1.0.0-beta.46
+
+go to build/contracts
+type npm init -y
+go to root directory, npm link ./build/contracts
+
+create ./config file for using react with blockchain
+
+// aimport TodoListContract from "contracts/TodoList.json"; // need to do the above commands for importing this
+// export const contractAddress = "0x373D87d1D91540D4C2E77D43b61D82Db9f5465A0";
+// change the address everytime we start ganache from build/contracts/ToDoList.json address value 
+// export const contractABI = TodoListContract.abi;
+
+wherever we want to use block chain values, use this import statement: 
+// import { contractABI, contractAddress } from "./config";
+
+
+In app.js, setup the blockchain network and metamask by the below function
+
+// const [account, setAccount] = useState("");
+
+//   useEffect(() => {
+//     const loadBlockchainData = async () => {
+//       try {
+//         const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+//         const accounts = await web3.eth.getAccounts();
+//         setAccount(accounts[0]);
+//       } catch (error) {
+//         console.error("Error loading blockchain data:", error);
+//       }
+//     };
+
+//     loadBlockchainData();
+//   }, []);
+
+if we want to use the value from anywhere, use this
+
+// const getTaskCount = async () => {
+//     const taskCount = await todoListContract.methods.taskCount().call();
+//     console.log('Task Count:', taskCount);
+//   };
+  
+//   getTaskCount();
+
+
+for creating env variables, create .env file in root directory and access the variables like this
+// const add = process.env.REACT_APP_SECOND_ACCT;
+npm run start
